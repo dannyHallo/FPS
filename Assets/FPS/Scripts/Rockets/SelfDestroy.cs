@@ -6,7 +6,7 @@ public class SelfDestroy : MonoBehaviour
 {
 
     public float SelfDestroyTime = 5;
-    public GameObject thisRocket;   
+    public GameObject thisRocket;
     public GameObject Flame;
     public AudioClip ExplodingNoice;
 
@@ -16,7 +16,7 @@ public class SelfDestroy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -41,13 +41,16 @@ public class SelfDestroy : MonoBehaviour
 
     public void DestroyRkt()
     {
-        
-        BallDestruct bd = thisRocket.GetComponent<BallDestruct>();
-        bd.Destroy();
-        pos = transform.position;
-        Instantiate(Flame, pos, transform.rotation);
-        AudioSource.PlayClipAtPoint(ExplodingNoice, pos);
-        
-
+        if (thisRocket != null)
+        {
+            BallDestruct bd = thisRocket.GetComponent<BallDestruct>();
+            if (bd != null)
+            {
+                bd.Destroy();
+                pos = transform.position;
+                Instantiate(Flame, pos, transform.rotation);
+                AudioSource.PlayClipAtPoint(ExplodingNoice, pos);
+            }
+        }
     }
 }

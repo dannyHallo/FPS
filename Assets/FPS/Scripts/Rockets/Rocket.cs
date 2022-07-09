@@ -58,12 +58,12 @@ public class Rocket : MonoBehaviour
             transform.Translate(Vector3.forward * 0.45f, Space.Self);
             Fire.SetActive(true);
         }
-        else if(yNow - yRaw <= myHeight+5 && flag1)
+        else if (yNow - yRaw <= myHeight + 5 && flag1)
         {
             transform.Translate(Vector3.forward * 0.25f, Space.Self);
             Fire.SetActive(false);
         }
-        else if(flag1)
+        else if (flag1)
         {
             Fire.SetActive(true);
             AutoRotate(5f);
@@ -75,13 +75,13 @@ public class Rocket : MonoBehaviour
             {
                 flag1 = false;
             }
-            
+
 
         }
         else
         {
             i++;
-            if(i < 30)
+            if (i < 30)
             {
                 Fire.SetActive(true);
                 AutoRotate(1.5f);
@@ -91,10 +91,10 @@ public class Rocket : MonoBehaviour
                 Chase();
                 IfSelfDestruct();
             }
-            
+
         }
-        
-        
+
+
     }
 
     void Chase()
@@ -126,7 +126,7 @@ public class Rocket : MonoBehaviour
                 //print("trigger1");
                 DestroyRkt();
             }
-            
+
 
 
         }
@@ -160,8 +160,7 @@ public class Rocket : MonoBehaviour
     void CheckPlayer()
     {
         distance = Vector3.Distance(transform.position, Player.transform.position);
-        print(distance);
-        if(distance <= blowRange)
+        if (distance <= blowRange)
         {
             Player.GetComponent<Health>().TakeDamage(Damage, gameObject);
         }
